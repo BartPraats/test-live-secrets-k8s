@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: test-live-secrets-k8s
+  pullPolicy: Never
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false
+
+resources:
+   limits:
+     memory: 1000Mi
+   requests:
+     memory: 1000Mi
+     cpu: 100m
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
+
+secrets:
+  someSecret: SomeSecret
