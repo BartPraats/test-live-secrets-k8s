@@ -10,3 +10,5 @@ Repository to test the integration between spring-boot:3 and spring-cloud-starte
 5. Run `kubectl get pods` and look for your pod. Copy the pods name.
 6. Run `kubectl port-forward <pod-name> 8080:8080`2
 7. Browse to localhost:8080/v1/secret, and you should see the values passed in step 4.
+
+If you now change any of the values and call localhost:8080/actuator/refresh endpoint on the application the value changes should be reflected when calling localhost:8080/v1/secret.
