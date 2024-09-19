@@ -10,4 +10,5 @@ import org.springframework.context.annotation.Configuration;
 public class PropertyConfig {
     private String testSecretProperty;
     private String testConfigmapProperty;
+    private String testMountedSecretProperty;
 }

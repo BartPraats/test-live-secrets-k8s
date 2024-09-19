@@ -21,6 +21,8 @@ public class DemoController {
 
     @GetMapping("/secret")
     public String liveReload() {
-        return "Configmap Value: " + propertyConfig.getTestConfigmapProperty() + "\nSecret Value: " + propertyConfig.getTestSecretProperty();
+        return "Configmap Value: " + propertyConfig.getTestConfigmapProperty() +
+                "\nSecret Value: " + propertyConfig.getTestSecretProperty() +
+                "\nMounted Secret Value: " + propertyConfig.getTestMountedSecretProperty();
     }
 }

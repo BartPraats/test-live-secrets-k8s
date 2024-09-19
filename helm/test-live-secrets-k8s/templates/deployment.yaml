@@ -48,6 +48,17 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: SPRING_CONFIG_IMPORT
-              value: "kubernetes:"
+              value: "configtree:/mnt/secrets/,kubernetes:,optional:configserver:"
             - name: SPRING_PROFILES_ACTIVE
               value: "dev"
+          volumeMounts:
+            - name: {{ .Chart.Name }}-secrets-volume
+              mountPath: "/mnt/secrets"
+              readOnly: true
+      volumes:
+        - name: {{ .Chart.Name }}-secrets-volume
+          secret:
+            secretName: {{ .Chart.Name }}-secrets
+            items:
+              - key: test-live-secrets-k8s.test-mounted-secret-property
+                path: test-live-secrets-k8s.test-mounted-secret-property

@@ -1,3 +1,6 @@
+logging:
+  level:
+    root: info
 spring:
   application:
     name: test-live-secrets-k8s
@@ -9,8 +12,6 @@ spring:
         enabled: true
         enable-api: true
         name: test-live-secrets-k8s-secrets
-  config:
-    import: "optional:configserver:"
 
 management:
   endpoints:
@@ -21,3 +22,4 @@ management:
 test-live-secrets-k8s:
   test-configmap-property: test-configmap-value
   test-secret-property: test-secret-value
+  test-mounted-secret-property: test-mounted-secret-value
